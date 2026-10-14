@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/12 16:42:58 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 13:44:57 by mbadarin         ###   ########.fr       */
+/*   Created: 2026/10/14 15:49:34 by mbadarin          #+#    #+#             */
+/*   Updated: 2026/10/14 15:49:37 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <string.h>
 # include <limits.h>
 
+# define RED_FG "\033[0;31m"
+# define RESET "\033[0m"
+# define WHITE_BG "\033[47m"
+
 typedef struct s_format
 {
 	size_t	precision;
@@ -32,6 +36,7 @@ void	foo(char *f_str, ...)__attribute__((format(printf, 1, 2)));
 int		validate_format_str(char *f_str);
 size_t	get_precision(char *f_str);
 size_t	get_width(char *f_str);
+int		get_pad_0(char *f_str);
 size_t	max(int arg_count, ...);
 int		get_digits_count(long long l, int base_len);
 char	*ft_ltoa(long long l);

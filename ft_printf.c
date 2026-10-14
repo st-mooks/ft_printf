@@ -6,7 +6,7 @@
 /*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/05 13:39:27 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 14:52:36 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/14 15:49:49 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,10 @@ int	main()
 	hex = 127;
 	uint = UINT_MAX;
 	str = "This is a string";
-	printf_return = printf("%:%% s:%s u:%u c:%c x:%x X:%X p:%p%!valid\n", str, uint, c, hex, hex, &hex);
-	ft_printf_return = ft_printf("%:%% s:%s u:%u c:%c x:%x X:%X p:%p%!valid\n", str, uint, c, hex, hex, &hex);
-	ft_printf("printf return=%d\nft_printf_return=%d\n"
+	ft_printf("****\n"RED_FG WHITE_BG"printf"RESET":\n");
+	printf_return = printf("\"%.5s %-15c %0.6u %#010.2x %025X %p\"\n", str, c, uint, hex, hex, &hex);
+	ft_printf("****\n"RED_FG WHITE_BG"ft_printf"RESET":\n");
+	ft_printf_return = ft_printf("\"%.5s %-15c %0.6u %#010.2x %025X %p\"\n", str, c, uint, hex, hex, &hex);
+	ft_printf("****\nprintf return = %u\nft_printf_return = %u\n"
 				"", printf_return, ft_printf_return);
 }

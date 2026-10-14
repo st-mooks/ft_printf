@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/12 14:43:36 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 10:02:52 by mbadarin         ###   ########.fr       */
+/*   Created: 2026/10/14 15:50:01 by mbadarin          #+#    #+#             */
+/*   Updated: 2026/10/14 15:50:07 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	*build_str_str(char *f_str, char *arg, t_format format_props)
 
 	arg_len = ft_strlen(arg);
 	len = max(2, arg_len, format_props.width);
+	if (len > format_props.precision)
+		len = format_props.precision;
 	trim_str = get_trim_str(f_str, arg, arg_len, format_props.precision);
 	pad_str = get_pad_str(trim_str, len, format_props.pad_0);
 	if (format_props.just_l)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_uint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/12 19:23:13 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 13:26:43 by mbadarin         ###   ########.fr       */
+/*   Created: 2026/10/14 15:50:19 by mbadarin          #+#    #+#             */
+/*   Updated: 2026/10/14 15:50:23 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ void	print_uint(char *f_str, va_list *args, int *char_count)
 	format_props.precision = get_precision(f_str);
 	format_props.width = get_width(f_str);
 	format_props.just_l = (ft_strchr(f_str, '-') != NULL);
-	format_props.pad_0 = (ft_strchr(f_str, '0')
+	format_props.pad_0 = (get_pad_0(f_str)
 			&& !format_props.just_l
 			&& !format_props.precision);
 	str = build_str_uint(arg, format_props);
 	ft_putstr_fd(str, 1);
-	char_count += ft_strlen(str);
+	*char_count += ft_strlen(str);
 	free(str);
 }

@@ -6,7 +6,7 @@
 /*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 13:12:31 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 14:51:14 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/14 15:03:23 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	print_hex(char *f_str, va_list *args, int *char_count)
 	format_props.precision = get_precision(f_str);
 	format_props.width = get_width(f_str);
 	format_props.just_l	= (ft_strchr(f_str, '-') != NULL);
-	format_props.pad_0 = ((ft_strchr(f_str, '0') != NULL)
+	format_props.pad_0 = (get_pad_0(f_str)
 						&& !format_props.precision
 						&& !format_props.just_l);
 	str = build_str_hex(arg, format_props, f_str);

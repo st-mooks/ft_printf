@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/13 11:56:52 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 13:30:54 by mbadarin         ###   ########.fr       */
+/*   Created: 2026/10/14 15:51:41 by mbadarin          #+#    #+#             */
+/*   Updated: 2026/10/14 15:51:43 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,37 @@ size_t	get_width(char *f_str)
 	size_t	width;
 
     while (*f_str
-			&& !ft_isdigit(*f_str)
+			&& (!ft_isdigit(*f_str) || *f_str == '0')
 			&& *f_str != '.')
         f_str++;
 	width = ft_atoi(f_str);
 	return (width);
+}
+
+int	get_pad_0(char *f_str)
+{
+	char	*zero_ptr;
+	char	*check_ptr;
+	char	digit;
+	int		pad_0;
+
+	pad_0 = 1;
+	digit = '1';
+	zero_ptr = ft_strchr(f_str, '0');
+	if (zero_ptr)
+		while (digit <= '9')
+		{
+			if ((check_ptr = ft_strchr(f_str, digit))
+				&& check_ptr < zero_ptr)
+			{
+				pad_0 = 0;
+				break ;
+			}
+			digit++;
+		}
+	else
+		pad_0 = 0;
+	return (pad_0);
 }
 
 size_t	max(int arg_count, ...)
