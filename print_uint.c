@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 19:23:13 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 12:45:40 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/14 13:26:43 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ char	*build_str_uint(char *arg, t_format format_props)
 		str = ft_strjoin(pad_str, precision_str);
 	free(precision_str);
 	free(pad_str);
-	str[len] = '\0';
 	return (str);
 }
 

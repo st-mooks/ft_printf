@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 16:42:58 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 12:46:46 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/14 13:44:57 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,13 @@ int		validate_format_str(char *f_str);
 size_t	get_precision(char *f_str);
 size_t	get_width(char *f_str);
 size_t	max(int arg_count, ...);
+int		get_digits_count(long long l, int base_len);
 char	*ft_ltoa(long long l);
 char	*get_pad_str(char *precision_str, size_t len, int pad_0);
 char	*get_precision_str(char *arg, size_t precision);
 void	print_uint(char *f_str, va_list *args, int *char_count);
 void	print_str(char *f_str, va_list *args, int *char_count);
 void	print_char(char *f_str, va_list *args, int *char_count);
+void	print_hex(char *f_str, va_list *args, int *char_count);
+void	print_ptr(char *f_str, va_list *args, int *char_count);
 #endif

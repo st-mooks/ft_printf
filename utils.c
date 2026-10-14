@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/13 11:56:52 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 12:44:44 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/14 13:30:54 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char *fill_digits(long long l, int size)
 	return (str);
 }
 
-int	get_digits_count(long long l)
+int	get_digits_count(long long l, int base_len)
 {
 	int	count;
 
@@ -45,7 +45,7 @@ int	get_digits_count(long long l)
 	while (l > 0)
 	{
 		count++;
-		l /= 10;
+		l /= base_len;
 	}
 	return (count);
 }
@@ -57,7 +57,7 @@ char	*ft_ltoa(long long l)
 
 	if (l == LONG_MIN)
 		return (ft_strdup("-9223372036854775808"));
-	size = get_digits_count(l);
+	size = get_digits_count(l, 10);
 	str = fill_digits(l, size);
 	return (str);
 }
