@@ -6,13 +6,13 @@
 /*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 16:33:11 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/13 14:33:04 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/14 09:53:26 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_char(char *f_str, va_list *args)
+void	print_char(char *f_str, va_list *args, int	*char_count)
 {
 	char		*str;
 	char		arg[2];
@@ -32,5 +32,6 @@ void	print_char(char *f_str, va_list *args)
 	else
 		str = ft_strjoin(pad_str, arg);
 	ft_putstr_fd(str, 1);
+	*char_count += ft_strlen(str);
 	free(str);
 }

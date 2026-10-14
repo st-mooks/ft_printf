@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 14:43:36 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/13 12:51:04 by marvin           ###   ########.fr       */
+/*   Updated: 2026/10/14 10:02:52 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ char	*get_trim_str(char *f_str, char *arg, size_t arg_len, size_t precision)
 	size = 0;
 	while (size < precision)
 		size++;
-	str = malloc(size + 1);
+	str = ft_substr(arg, 0, size);
+	/*str = malloc(size + 1);
 	i = 0;
 	while (i < size)
 		str[i++] = arg[i];
-	str[i] = '\0';
+	str[i] = '\0';*/
 	return (str);
 }
 
@@ -52,7 +53,7 @@ char	*build_str_str(char *f_str, char *arg, t_format format_props)
 	return (str);
 }
 
-void	print_str(char *f_str, va_list *args)
+void	print_str(char *f_str, va_list *args, int *char_count)
 {
 	char		*arg;
 	char		*str;
@@ -65,5 +66,6 @@ void	print_str(char *f_str, va_list *args)
 	format_props.pad_0 = 0;
 	str = build_str_str(f_str, arg, format_props);
 	ft_putstr_fd(str, 1);
+	*char_count += ft_strlen(str);
 	free(str);
 }

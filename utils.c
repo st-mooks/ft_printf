@@ -6,11 +6,61 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/13 11:56:52 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/13 13:49:02 by marvin           ###   ########.fr       */
+/*   Updated: 2026/10/14 12:44:44 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char *fill_digits(long long l, int size)
+{
+	int		i;
+	char	*base;
+	char	*str;
+
+	str = malloc(size + 1);
+	if (!str)
+		return (NULL);
+	base = "0123456789";
+	i = 0;
+	while (i < size)
+	{
+		str[size - i - 1] = base[l % 10];
+		l /= 10;
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
+int	get_digits_count(long long l)
+{
+	int	count;
+
+	count = 0;
+	if (l == 0)
+		count++;
+	if (l < 0)
+		l *= -1;
+	while (l > 0)
+	{
+		count++;
+		l /= 10;
+	}
+	return (count);
+}
+
+char	*ft_ltoa(long long l)
+{
+	char	*str;
+	int		size;
+
+	if (l == LONG_MIN)
+		return (ft_strdup("-9223372036854775808"));
+	size = get_digits_count(l);
+	str = fill_digits(l, size);
+	return (str);
+}
 
 size_t	get_precision(char *f_str)
 {
@@ -29,7 +79,9 @@ size_t	get_width(char *f_str)
 {
 	size_t	width;
 
-    while (!ft_isdigit(*f_str) && *f_str != '.')
+    while (*f_str
+			&& !ft_isdigit(*f_str)
+			&& *f_str != '.')
         f_str++;
 	width = ft_atoi(f_str);
 	return (width);
@@ -66,6 +118,7 @@ char	*get_precision_str(char *arg, size_t precision)
 	i = 0;
 	while (precision > arg_len + i)
 		str[i++] = '0';
+	str[i] = '\0';
 	ft_strlcat(str, arg, size);
 	return (str);
 }
@@ -97,7 +150,7 @@ int validate_format_str(char *f_str)
 
     width = ft_itoa((int)get_width(f_str));
     ptr = ft_strnstr(f_str, width, ft_strlen(f_str));
-    if (ptr)
+    if (ptr && *width != '0')
     {
         if (((check_str = ft_strchr(f_str, '+')) && check_str > ptr)
         || ((check_str =  ft_strchr(f_str, '-')) && check_str > ptr)
