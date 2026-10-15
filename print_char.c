@@ -6,33 +6,43 @@
 /*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 16:33:11 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/15 09:14:13 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/15 11:26:16 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+char	*build_str_char(char arg, t_format format_props)
+{
+	char	*str;
+	char	arg_str[2];
+	char	*pad_str;
+	size_t	len;
+
+	arg_str[0] = arg;
+	arg_str[1] = '\0';
+	len = max(2, ft_strlen(arg_str), format_props.width);
+	pad_str = get_pad_str(arg_str, len, format_props.pad_0);
+	if (format_props.just_l)
+		str = ft_strjoin(arg_str, pad_str);
+	else
+		str = ft_strjoin(pad_str, arg_str);
+	free(pad_str);
+	return (str);
+}
+
 void	print_char(char *f_str, va_list *args, int	*char_count)
 {
 	char		*str;
-	char		arg[2];
-	char		*pad_str;
+	char		arg;
 	t_format	format_props;
-	size_t		len;
 
-	arg[0] = (char)va_arg(*args, int);
-	arg[1] = '\0';
+	arg = (char)va_arg(*args, int);
 	format_props.width = get_width(f_str);
-	len = max(2, ft_strlen(arg), format_props.width);
 	format_props.just_l = (ft_strchr(f_str, '-') != NULL);
 	format_props.pad_0 = 0;
-	pad_str = get_pad_str(arg, len, format_props.pad_0);
-	if (format_props.just_l)
-		str = ft_strjoin(arg, pad_str);
-	else
-		str = ft_strjoin(pad_str, arg);
+	str = build_str_char(arg, format_props);
 	ft_putstr_fd(str, 1);
 	*char_count += ft_strlen(str);
-	free(pad_str);
 	free(str);
 }

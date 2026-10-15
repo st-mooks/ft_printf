@@ -10,7 +10,7 @@ SOURCES:= 	${PRINTF_PATH}/ft_printf.c\
 			${PRINTF_PATH}/print_uint.c\
 			${PRINTF_PATH}/print_hex.c\
 			${PRINTF_PATH}/print_ptr.c\
-			${PRINTF_PATH}/f_str.c\
+			${PRINTF_PATH}/utils_f_str.c\
 			${PRINTF_PATH}/utils_format_props.c\
 			${PRINTF_PATH}/utils_print.c\
 			${PRINTF_PATH}/utils_numeric.c
