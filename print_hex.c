@@ -78,16 +78,9 @@ void	print_hex(char *f_str, va_list *args, int *char_count)
 	char				*str;
 
 	arg = va_arg(*args, long long);
-	format_props.precision = get_precision(f_str);
-	format_props.width = get_width(f_str);
-	format_props.just_l = (ft_strchr(f_str, '-') != NULL);
-	format_props.pad_0 = (get_pad_0(f_str)
-			&& !format_props.precision
-			&& !format_props.just_l);
+	fill_format_props(&format_props, f_str);
 	str = build_str_hex(arg, format_props, f_str);
 	if (ft_strchr(f_str, 'X'))
 		capitalise(str);
-	ft_putstr_fd(str, 1);
-	*char_count += ft_strlen(str);
-	free(str);
+	print_update_free(str, char_count);
 }

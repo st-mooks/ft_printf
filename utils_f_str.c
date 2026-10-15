@@ -12,6 +12,15 @@
 
 #include "ft_printf.h"
 
+void	check_and_print(char *f_str, va_list *args, int *char_count)
+{
+	if (f_str)
+	{
+		print_arg(f_str, args, char_count);
+		free(f_str);
+	}
+}
+
 int	get_f_str_len(char *str)
 {
 	int		len;
@@ -21,13 +30,13 @@ int	get_f_str_len(char *str)
 	valid_specifiers = "cspdiuxX";
 	valid_flags = "-0# +.";
 	len = 0;
-	while (char_in_set(*str, valid_flags)
+	while (ft_strchr(valid_flags, *str)
 		|| ft_isdigit(*str))
 	{
 		str++;
 		len++;
 	}
-	if (char_in_set(*str, valid_specifiers))
+	if (ft_strchr(valid_specifiers, *str))
 		len++;
 	else
 		len = 0;

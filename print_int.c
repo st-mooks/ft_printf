@@ -64,18 +64,8 @@ void	print_int(char *f_str, va_list *args, int *char_count)
 	t_format	format_props;
 
 	arg = ft_itoa(va_arg(*args, int));
-	format_props.precision = get_precision(f_str);
-	format_props.width = get_width(f_str);
-	format_props.just_l = (ft_strchr(f_str, '-') != NULL);
-	format_props.pad_0 = (get_pad_0(f_str)
-			&& !format_props.precision
-			&& !format_props.just_l);
-	format_props.sign = (ft_strchr(f_str, '+') != NULL);
-	format_props.space = ((ft_strchr(f_str, ' ') != NULL)
-			&& !format_props.sign);
+	fill_format_props(&format_props, f_str);
 	str = build_str_int(arg, format_props);
-	*char_count += ft_strlen(str);
-	ft_putstr_fd(str, 1);
 	free(arg);
-	free(str);
+	print_update_free(str, char_count);
 }

@@ -38,11 +38,7 @@ void	print_char(char *f_str, va_list *args, int	*char_count)
 	t_format	format_props;
 
 	arg = (char)va_arg(*args, int);
-	format_props.width = get_width(f_str);
-	format_props.just_l = (ft_strchr(f_str, '-') != NULL);
-	format_props.pad_0 = 0;
+	fill_format_props(&format_props, f_str);
 	str = build_str_char(arg, format_props);
-	ft_putstr_fd(str, 1);
-	*char_count += ft_strlen(str);
-	free(str);
+	print_update_free(str, char_count);
 }

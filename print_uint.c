@@ -38,14 +38,7 @@ void	print_uint(char *f_str, va_list *args, int *char_count)
 	char		*arg;
 
 	arg = ft_ltoa((long long)va_arg(*args, unsigned int));
-	format_props.precision = get_precision(f_str);
-	format_props.width = get_width(f_str);
-	format_props.just_l = (ft_strchr(f_str, '-') != NULL);
-	format_props.pad_0 = (get_pad_0(f_str)
-			&& !format_props.just_l
-			&& !format_props.precision);
+	fill_format_props(&format_props, f_str);
 	str = build_str_uint(arg, format_props);
-	ft_putstr_fd(str, 1);
-	*char_count += ft_strlen(str);
-	free(str);
+	print_update_free(str, char_count);
 }
