@@ -6,7 +6,7 @@
 /*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 13:12:31 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 15:03:23 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/15 10:51:13 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ char	*build_str_hex(long long arg, t_format format_props, char *f_str)
 		precision_str = ft_strjoin("0x", precision_str);
 		free(pad_str);
 	}
-	len = max(3, ft_strlen(precision_str), format_props.precision, format_props.width);
+	len = max(3, ft_strlen(precision_str),
+			format_props.precision, format_props.width);
 	pad_str = get_pad_str(precision_str, len, format_props.pad_0);
 	if (format_props.just_l)
 		str = ft_strjoin(precision_str, pad_str);
@@ -79,10 +80,10 @@ void	print_hex(char *f_str, va_list *args, int *char_count)
 	arg = va_arg(*args, long long);
 	format_props.precision = get_precision(f_str);
 	format_props.width = get_width(f_str);
-	format_props.just_l	= (ft_strchr(f_str, '-') != NULL);
+	format_props.just_l = (ft_strchr(f_str, '-') != NULL);
 	format_props.pad_0 = (get_pad_0(f_str)
-						&& !format_props.precision
-						&& !format_props.just_l);
+			&& !format_props.precision
+			&& !format_props.just_l);
 	str = build_str_hex(arg, format_props, f_str);
 	if (ft_strchr(f_str, 'X'))
 		capitalise(str);

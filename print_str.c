@@ -6,7 +6,7 @@
 /*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 15:50:01 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 15:50:07 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/14 15:55:22 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*get_trim_str(char *f_str, char *arg, size_t arg_len, size_t precision)
 {
 	char	*str;
 	size_t	size;
-	size_t	i;
 
 	if (precision >= arg_len || !ft_strchr(f_str, '.'))
 		return (ft_strdup(arg));
@@ -24,11 +23,6 @@ char	*get_trim_str(char *f_str, char *arg, size_t arg_len, size_t precision)
 	while (size < precision)
 		size++;
 	str = ft_substr(arg, 0, size);
-	/*str = malloc(size + 1);
-	i = 0;
-	while (i < size)
-		str[i++] = arg[i];
-	str[i] = '\0';*/
 	return (str);
 }
 

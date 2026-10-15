@@ -6,13 +6,13 @@
 /*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/05 13:39:27 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 15:49:49 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/15 10:56:35 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_sub(char *f_str, va_list *args, int *char_count)
+void	print_arg(char *f_str, va_list *args, int *char_count)
 {
 	if (ft_strchr(f_str, 'c'))
 		print_char(f_str, args, char_count);
@@ -20,80 +20,21 @@ void	print_sub(char *f_str, va_list *args, int *char_count)
 		print_str(f_str, args, char_count);
 	if (ft_strchr(f_str, 'p'))
 		print_ptr(f_str, args, char_count);
-	/*if (ft_strchr(f_str, 'd') || ft_strchr(f_str, 'i'))
-		print_int(f_str, args, char_count);*/
+	if (ft_strchr(f_str, 'd') || ft_strchr(f_str, 'i'))
+		print_int(f_str, args, char_count);
 	if (ft_strchr(f_str, 'u'))
 		print_uint(f_str, args, char_count);
 	if (ft_strchr(f_str, 'x') || ft_strchr(f_str, 'X'))
 		print_hex(f_str, args, char_count);
 }
 
-int     char_in_set(char c, char *set)
-{   
-    while (*set)
-        if (c == *set++)
-            return (1);
-    return (0);
-}
-
-int		get_f_str_len(char *str)
+void	check_and_print(char *f_str, va_list *args, int *char_count)
 {
-	int		len;
-	char    *valid_specifiers;
-	char	*valid_flags;
-
-	valid_specifiers = "cspdiuxX";
-	valid_flags = "-0# +.";
-	len = 0;
-	while (char_in_set(*str, valid_flags)
-		|| ft_isdigit(*str))
+	if (f_str)
 	{
-		str++;
-		len++;
+		print_arg(f_str, args, char_count);
+		free(f_str);
 	}
-	if (char_in_set(*str, valid_specifiers))
-		len++;
-	else
-		len = 0;
-	return (len);
-}
-
-void	print_percent(int percent_count, int *char_count)
-{
-	while (percent_count > 0)
-	{
-		ft_putchar_fd('%', 1);
-		percent_count -= 2;
-		*char_count += 1;
-	}
-}
-
-char	*get_f_str(const char **str, int *char_count)
-{
-	char	*f_str;
-	int		percent_count;
-	int		f_str_len;
-	int		i;
-
-	percent_count = 0;
-	f_str = NULL;
-	while (**str == '%')
-	{
-		percent_count++;
-		(*str)++;
-	}
-	if (percent_count % 2 != 0)
-	{
-		f_str_len = get_f_str_len(*(char **)str);
-		if (f_str_len)
-		{
-			percent_count--;
-			f_str = ft_substr(*str, 0, f_str_len);
-			(*str) += f_str_len;
-		}
-	}
-	print_percent(percent_count, char_count);
-	return (f_str);
 }
 
 int	ft_printf(const char *str, ...)
@@ -109,11 +50,7 @@ int	ft_printf(const char *str, ...)
 		if (*str == '%')
 		{
 			f_str = get_f_str(&str, &char_count);
-			if (f_str)
-			{
-				print_sub(f_str, &args, &char_count);
-				free(f_str);
-			}
+			check_and_print(f_str, &args, &char_count);
 		}
 		else
 		{
@@ -125,8 +62,8 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (char_count);
 }
-
-int	main()
+/*
+int	main(void)
 {
 	char			*str;
 	int				ft_printf_return;
@@ -142,9 +79,11 @@ int	main()
 	uint = UINT_MAX;
 	str = "This is a string";
 	ft_printf("****\n"RED_FG WHITE_BG"printf"RESET":\n");
-	printf_return = printf("\"%.5s %-15c %0.6u %#010.2x %025X %p\"\n", str, c, uint, hex, hex, &hex);
+	printf_return = printf("\"%.5s %-15c %0.6u "
+		"%#010.2x %025X %p\"\n", str, c, uint, hex, hex, &hex);
 	ft_printf("****\n"RED_FG WHITE_BG"ft_printf"RESET":\n");
-	ft_printf_return = ft_printf("\"%.5s %-15c %0.6u %#010.2x %025X %p\"\n", str, c, uint, hex, hex, &hex);
+	ft_printf_return = ft_printf("\"%.5s %-15c %0.6u "
+		"%#010.2x %025X %p\"\n", str, c, uint, hex, hex, &hex);
 	ft_printf("****\nprintf return = %u\nft_printf_return = %u\n"
 				"", printf_return, ft_printf_return);
-}
+}*/

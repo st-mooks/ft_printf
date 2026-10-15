@@ -6,7 +6,7 @@
 /*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 16:33:11 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 09:53:26 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/15 09:14:13 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	print_char(char *f_str, va_list *args, int	*char_count)
 		str = ft_strjoin(pad_str, arg);
 	ft_putstr_fd(str, 1);
 	*char_count += ft_strlen(str);
+	free(pad_str);
 	free(str);
 }
