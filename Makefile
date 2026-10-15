@@ -2,7 +2,8 @@ NAME:= libftprintf.a
 CC:= cc
 CFLAGS:= -Wall -Werror -Wextra
 PRINTF_PATH:= ../ft_printf
-LIBFT_PATH:= ../libft
+LIBFT_PATH:= ./libft
+LIBFT:= ${LIBFT_PATH}/libft.a
 SOURCES:= 	${PRINTF_PATH}/ft_printf.c\
 			${PRINTF_PATH}/print_char.c\
 			${PRINTF_PATH}/print_str.c\
@@ -14,20 +15,20 @@ SOURCES:= 	${PRINTF_PATH}/ft_printf.c\
 			${PRINTF_PATH}/utils_format_props.c\
 			${PRINTF_PATH}/utils_print.c\
 			${PRINTF_PATH}/utils_numeric.c
-OBJECTS:= ${SOURCES:.c=.o}
-HEADER:= ${PRINTF_PATH}/ft_printf.h
-LIBFT:= ${PRINTF_PATH}/libft.a
-all: ${NAME} ${LIBFT}
-${NAME}: ${OBJECTS} ${HEADER}
+OBJECTS:= 	${SOURCES:.c=.o}
+all: ${NAME}
+${NAME}: ${OBJECTS} ${LIBFT}
 	ar r $@ $^
+	printf "OPEN ${LIBFT}\nADDLIB ${NAME}\nSAVE\nEND\n" | ar -M
+	mv ${LIBFT} ${NAME}
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
 ${LIBFT}:
-	make -f ${LIBFT_PATH}/Makefile
-	make -f ${LIBFT_PATH}/Makefile clean
+	make -C ${LIBFT_PATH}
 clean:
 	rm -f ${OBJECTS}
+	make -C ${LIBFT_PATH} clean
 fclean: clean
-	rm -f ${NAME} ${LIBFT}
+	rm -f ${NAME}
 re: fclean all
 .PHONY: all clean fclean re
