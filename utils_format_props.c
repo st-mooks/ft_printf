@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_format_props.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/14 15:51:41 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/18 08:58:37 by marvin           ###   ########.fr       */
+/*   Created: 2026/10/18 13:08:35 by mbadarin          #+#    #+#             */
+/*   Updated: 2026/10/18 13:18:09 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void    fill_format_props(t_format *format_props, char *f_str)
 	format_props->just_l = (ft_strchr(f_str, '-') != NULL);
 	format_props->pad_0 = (
             get_pad_0(f_str)
-			&& !format_props->precision
+			&& !ft_strchr(f_str, '.')
 			&& !format_props->just_l
             && !ft_strchr(f_str, 'c')
             && !ft_strchr(f_str, 's'));

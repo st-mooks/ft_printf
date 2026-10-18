@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_str.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/18 13:09:18 by mbadarin          #+#    #+#             */
+/*   Updated: 2026/10/18 13:16:29 by mbadarin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char	*get_precision_str(char *arg, size_t precision)
@@ -7,9 +19,13 @@ char	*get_precision_str(char *arg, size_t precision)
 	size_t	i;
 	size_t	size;
 
+	if (*arg == '0')
+		return (ft_strdup(""));
 	arg_len = ft_strlen(arg);
 	size = max(2, arg_len, precision) + 1;
 	str = malloc(size);
+	if (!str)
+		return (NULL);
 	i = 0;
 	while (precision > arg_len + i)
 		str[i++] = '0';
@@ -28,6 +44,8 @@ char	*get_pad_str(char *precision_str, size_t len, int pad_0)
 	pad_char = ' ';
 	size = len - ft_strlen(precision_str);
 	str = malloc(size + 1);
+	if (!str)
+		return (NULL);
 	if (pad_0)
 		pad_char = '0';
 	i = 0;
@@ -35,4 +53,47 @@ char	*get_pad_str(char *precision_str, size_t len, int pad_0)
 		str[i++] = pad_char;
 	str[i] = '\0';
 	return (str);
+}
+
+char	*get_hex_str(uintptr_t n)
+{
+	int		size;
+	int		i;
+	char	*hex_str;
+
+	size = get_digits_count(n, 16);
+	hex_str = malloc(size + 1);
+	if (n == 0)
+		hex_str[0] = '0';
+	i = size;
+	while (i > 0)
+	{
+		hex_str[i - 1] = "0123456789abcdef"[n % 16];
+		n /= 16;
+		i--;
+	}
+	hex_str[size] = '\0';
+	return (hex_str);
+}
+
+char	*join_free_str(char *str, char *new, int reverse)
+{
+	char	*ptr;
+
+	ptr = str;
+	if (reverse)
+		str = ft_strjoin(new, str);
+	else
+		str = ft_strjoin(str, new);
+	free(ptr);
+	return (str);
+}
+
+void	capitalise(char *str)
+{
+	while (*str)
+	{
+		*str = ft_toupper(*str);
+		str++;
+	}
 }

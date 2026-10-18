@@ -15,6 +15,8 @@ SOURCES:=	${PRINTF_PATH}/print_char.c\
 			${PRINTF_PATH}/utils_format_props.c\
 			${PRINTF_PATH}/utils_print.c\
 			${PRINTF_PATH}/utils_numeric.c\
+			${PRINTF_PATH}/utils_build_str.c\
+			${PRINTF_PATH}/utils_flags.c\
 			${PRINTF_PATH}/utils_str.c\
 			${PRINTF_PATH}/utils_arg_ptr.c\
 			${PRINTF_PATH}/ft_printf.c

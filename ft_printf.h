@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/14 15:49:34 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/18 08:49:55 by marvin           ###   ########.fr       */
+/*   Created: 2026/10/18 13:06:56 by mbadarin          #+#    #+#             */
+/*   Updated: 2026/10/18 13:06:59 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,37 @@ typedef struct s_format
 }	t_format;
 
 //utils_numeric: utility functions that handle numeric values
-size_t		max(int arg_count, ...);
-char		*fill_digits(uintptr_t l, int size);
-int			get_digits_count(uintptr_t l, int base_len);
-char		*ft_uintptr_toa(uintptr_t l);
-//utility functions that handle format_props struct
-//
+size_t			max(int arg_count, ...);
+char			*fill_digits(uintptr_t l, int size);
+int				get_digits_count(uintptr_t l, int base_len);
+char			*ft_uintptr_toa(uintptr_t l);
+//utils_format_props: utility functions that handle format_props struct
 size_t			get_precision(char *f_str);
 size_t			get_width(char *f_str);
 int				get_pad_0(char *f_str);
-void    		fill_format_props(t_format *format_props, char *f_str);
-//utilty functions that create strs
+void			fill_format_props(t_format *format_props, char *f_str);
+//utilty functions that create and manipulate strs
+//		util_build_str: create final printable strs
+char			*build_str_char(char arg, t_format format_props);
+char			*build_str_hex(uintptr_t arg,
+					t_format format_props, char *f_str);
+char			*build_str_int(char *arg, t_format format_props);
+char			*build_str_str(char *f_str, char *arg, t_format format_props);
+char			*build_str_uint(char *arg, t_format format_props);
+//		util_str: handle all other str operations
 char			*get_precision_str(char *arg, size_t precision);
 char			*get_pad_str(char *precision_str, size_t len, int pad_0);
-//create and retrieve pionters to pass to arg print functions
+char			*get_hex_str(uintptr_t n);
+char			*join_free_str(char *str, char *new, int reverse);
+void			capitalise(char *str);
+//		print_str: trim the arg str to fit precision
+char			*get_trim_str(char *f_str, char *arg, size_t arg_len, size_t precision);
+//utils_flags: handle sign and space flags for signed int (%d/%i) and # flag for hex (%x/%X/%p)
+char    		*advance_str(char *pad_str, t_format format_props);
+char    		*add_sign_space(char *precision_str, t_format format_props);
+void    		add_0x(char **precision_str, char **pad_str,
+					char *f_str,   t_format format_props);
+//utils_arg_ptr: create and retrieve pionters to pass to arg print functions
 void			*get_arg(char *f_str, va_list *args);
 int				*create_int_ptr(int n);
 unsigned int	*create_uint_ptr(unsigned int u);

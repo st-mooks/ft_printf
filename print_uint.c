@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_uint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/14 15:50:19 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/17 15:45:03 by marvin           ###   ########.fr       */
+/*   Created: 2026/10/18 13:08:13 by mbadarin          #+#    #+#             */
+/*   Updated: 2026/10/18 13:08:14 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-char	*build_str_uint(char *arg, t_format format_props)
-{
-	size_t	len;
-	char	*str;
-	char	*precision_str;
-	char	*pad_str;
-
-	len = max(3, ft_strlen(arg), format_props.precision, format_props.width);
-	precision_str = get_precision_str(arg, format_props.precision);
-	pad_str = get_pad_str(precision_str, len, format_props.pad_0);
-	if (format_props.just_l)
-		str = ft_strjoin(precision_str, pad_str);
-	else
-		str = ft_strjoin(pad_str, precision_str);
-	free(precision_str);
-	free(pad_str);
-	return (str);
-}
 
 void	print_uint(char *f_str, unsigned int arg, int *char_count)
 {
