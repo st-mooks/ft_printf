@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/13 14:36:51 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/15 10:31:51 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/18 08:46:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 char	*add_sign_space(char *str_pre, t_format format_props)
 {
-	size_t	len;
-
-	len = ft_strlen(str_pre);
 	if (format_props.sign)
 		return (ft_strjoin("+", str_pre));
 	if (format_props.space)
@@ -38,6 +35,7 @@ char	*build_str_int(char *arg, t_format format_props)
 	char	*precision_str;
 	char	*pad_str;
 	char	*ptr;
+	char	*ptr2;
 
 	len = max(3, ft_strlen(arg), format_props.precision, format_props.width);
 	precision_str = get_precision_str(arg, format_props.precision);
@@ -45,27 +43,41 @@ char	*build_str_int(char *arg, t_format format_props)
 	ptr = pad_str;
 	if (advance_ptr(ptr, format_props))
 		ptr++;
+	str = add_sign_space(precision_str, format_props);
+	ptr2 = str;
 	if (format_props.just_l)
-		str = ft_strjoin(precision_str, ptr);
+		str = ft_strjoin(str, ptr);
 	else
-		str = ft_strjoin(ptr, precision_str);
-	ptr = str;
-	str = add_sign_space(ptr, format_props);
+		str = ft_strjoin(ptr, str);
 	free(precision_str);
 	free(pad_str);
-	free(ptr);
+	free(ptr2);
 	return (str);
 }
-
-void	print_int(char *f_str, va_list *args, int *char_count)
+/*
+char	*build_str_int(char *arg, t_format f_props)
 {
+	char	*str;
+	char	*precision_str;
+	char	*pad_str;
+	size_t	len;
+
+	precision_str = get_precision_str(arg);
+	len = max(3, ft_strlen(precision_str, f_props.width, f_props.precisoin));
+	
+}*/
+
+void	print_int(char *f_str, int arg, int *char_count)
+{
+	char		*arg_str;
 	char		*str;
-	char		*arg;
 	t_format	format_props;
 
-	arg = ft_itoa(va_arg(*args, int));
+	arg_str = ft_itoa(arg);
+	if (!arg_str)
+		return ;
 	fill_format_props(&format_props, f_str);
-	str = build_str_int(arg, format_props);
-	free(arg);
+	str = build_str_int(arg_str, format_props);
+	free(arg_str);
 	print_update_free(str, char_count);
 }

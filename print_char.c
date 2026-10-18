@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 16:33:11 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/15 11:26:16 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/17 15:46:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,29 @@ char	*build_str_char(char arg, t_format format_props)
 	return (str);
 }
 
-void	print_char(char *f_str, va_list *args, int	*char_count)
+void	print_char(char *f_str, char arg, int *char_count)
 {
 	char		*str;
-	char		arg;
 	t_format	format_props;
 
-	arg = (char)va_arg(*args, int);
 	fill_format_props(&format_props, f_str);
 	str = build_str_char(arg, format_props);
-	print_update_free(str, char_count);
+	if (!arg)
+	{
+			*char_count += 1;
+			if (format_props.just_l)
+			{
+					ft_putchar_fd(0, 1);
+					ft_putstr_fd(str, 1);
+			}
+			else
+			{
+					ft_putstr_fd(str, 1);
+					ft_putchar_fd(0, 1);
+			}
+			char_count += ft_strlen(str);
+			free (str);	
+	}
+	else
+		print_update_free(str, char_count);
 }

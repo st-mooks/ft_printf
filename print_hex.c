@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 13:12:31 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/15 10:51:13 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/17 15:48:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*get_hex_str(long long n)
+char	*get_hex_str(uintptr_t n)
 {
 	int		size;
 	int		i;
@@ -42,7 +42,7 @@ void	capitalise(char *str)
 	}
 }
 
-char	*build_str_hex(long long arg, t_format format_props, char *f_str)
+char	*build_str_hex(uintptr_t arg, t_format format_props, char *f_str)
 {
 	size_t	len;
 	char	*precision_str;
@@ -71,13 +71,11 @@ char	*build_str_hex(long long arg, t_format format_props, char *f_str)
 	return (str);
 }
 
-void	print_hex(char *f_str, va_list *args, int *char_count)
+void	print_hex(char *f_str, uintptr_t arg, int *char_count)
 {
-	long long			arg;
 	t_format			format_props;
 	char				*str;
 
-	arg = va_arg(*args, long long);
 	fill_format_props(&format_props, f_str);
 	str = build_str_hex(arg, format_props, f_str);
 	if (ft_strchr(f_str, 'X'))

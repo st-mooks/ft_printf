@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_uint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 15:50:19 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/14 15:50:23 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/17 15:45:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,17 @@ char	*build_str_uint(char *arg, t_format format_props)
 	return (str);
 }
 
-void	print_uint(char *f_str, va_list *args, int *char_count)
+void	print_uint(char *f_str, unsigned int arg, int *char_count)
 {
 	t_format	format_props;
 	char		*str;
-	char		*arg;
+	char		*arg_str;
 
-	arg = ft_ltoa((long long)va_arg(*args, unsigned int));
+	arg_str = ft_uintptr_toa(arg);
+	if (!arg_str)
+		return ;
 	fill_format_props(&format_props, f_str);
-	str = build_str_uint(arg, format_props);
+	str = build_str_uint(arg_str, format_props);
+	free(arg_str);
 	print_update_free(str, char_count);
 }

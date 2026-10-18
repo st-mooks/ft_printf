@@ -6,7 +6,7 @@
 /*   By: mbadarin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/15 10:29:02 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/15 10:54:19 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/17 15:05:34 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ size_t	max(int arg_count, ...)
 	return (a);
 }
 
-char	*fill_digits(long long l, int size)
+char	*fill_digits(uintptr_t l, int size)
 {
 	int		i;
 	char	*base;
@@ -51,16 +51,14 @@ char	*fill_digits(long long l, int size)
 	return (str);
 }
 
-int	get_digits_count(long long l, int base_len)
+int	get_digits_count(uintptr_t l, int base_len)
 {
 	int	count;
 
 	count = 0;
 	if (l == 0)
 		count++;
-	if (l < 0)
-		l *= -1;
-	while (l > 0)
+	while (l != 0)
 	{
 		count++;
 		l /= base_len;
@@ -68,13 +66,11 @@ int	get_digits_count(long long l, int base_len)
 	return (count);
 }
 
-char	*ft_ltoa(long long l)
+char	*ft_uintptr_toa(uintptr_t l)
 {
 	char	*str;
 	int		size;
 
-	if (l == LONG_MIN)
-		return (ft_strdup("-9223372036854775808"));
 	size = get_digits_count(l, 10);
 	str = fill_digits(l, size);
 	return (str);

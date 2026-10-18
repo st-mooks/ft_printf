@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 15:50:01 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/15 18:21:56 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/17 17:02:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,21 @@ char	*build_str_str(char *f_str, char *arg, t_format format_props)
 	return (str);
 }
 
-void	print_str(char *f_str, va_list *args, int *char_count)
+void	print_str(char *f_str, char *arg, int *char_count)
 {
-	char		*arg;
 	char		*str;
+	char		*ptr;
 	t_format	format_props;
 
-	arg = va_arg(*args, char *);
+	ptr = NULL;
+	if (!arg)
+	{
+		arg = ft_strdup("(null)");
+		ptr = arg;
+	}
 	fill_format_props(&format_props, f_str);
 	str = build_str_str(f_str, arg, format_props);
+	if (ptr)
+		free(ptr);
 	print_update_free(str, char_count);
 }

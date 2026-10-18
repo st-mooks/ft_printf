@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_format_props.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 15:51:41 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/15 10:49:17 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/18 08:58:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ size_t	get_precision(char *f_str)
 	int		precision;
 
 	precision_str = ft_strchr(f_str, '.');
-	if (precision_str++)
-		precision = ft_atoi(precision_str);
+	if (precision_str)
+		precision = ft_atoi(++precision_str);
 	else
 		precision = 0;
 	return (precision);
@@ -65,39 +65,19 @@ int	get_pad_0(char *f_str)
 	return (pad_0);
 }
 
-char	*get_precision_str(char *arg, size_t precision)
+void    fill_format_props(t_format *format_props, char *f_str)
 {
-	char	*str;
-	size_t	arg_len;
-	size_t	i;
-	size_t	size;
-
-	arg_len = ft_strlen(arg);
-	size = max(2, arg_len, precision) + 1;
-	str = malloc(size);
-	i = 0;
-	while (precision > arg_len + i)
-		str[i++] = '0';
-	str[i] = '\0';
-	ft_strlcat(str, arg, size);
-	return (str);
-}
-
-char	*get_pad_str(char *precision_str, size_t len, int pad_0)
-{
-	char	pad_char;
-	char	*str;
-	size_t	size;
-	size_t	i;
-
-	pad_char = ' ';
-	size = len - ft_strlen(precision_str);
-	str = malloc(size + 1);
-	if (pad_0)
-		pad_char = '0';
-	i = 0;
-	while (size > i)
-		str[i++] = pad_char;
-	str[i] = '\0';
-	return (str);
+    format_props->precision = get_precision(f_str);
+	format_props->width = get_width(f_str);
+	format_props->just_l = (ft_strchr(f_str, '-') != NULL);
+	format_props->pad_0 = (
+            get_pad_0(f_str)
+			&& !format_props->precision
+			&& !format_props->just_l
+            && !ft_strchr(f_str, 'c')
+            && !ft_strchr(f_str, 's'));
+	format_props->sign = (ft_strchr(f_str, '+') != NULL);
+	format_props->space = (
+            (ft_strchr(f_str, ' ') != NULL)
+			&& !format_props->sign);
 }
