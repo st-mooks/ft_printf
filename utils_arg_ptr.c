@@ -3,29 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   utils_arg_ptr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 13:08:25 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/18 13:08:26 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/19 15:09:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	*get_arg(char * f_str, va_list *args)
+void	*get_arg(va_list *args, t_format f_props)
 {
-	if (ft_strchr(f_str, 'c'))
+	if (f_props.f_ch == 'c')
 		return (create_int_ptr(va_arg(*args, int)));
-	if (ft_strchr(f_str, 's'))
+	if (f_props.f_ch == 's')
 		return (va_arg(*args, char *));
-	if (ft_strchr(f_str, 'p'))
+	if (f_props.f_ch == 'p')
 		return (va_arg(*args, void *));
-	if (ft_strchr(f_str, 'd')
-		|| ft_strchr(f_str, 'i'))
+	if (f_props.f_ch == 'd'
+		|| f_props.f_ch == 'i')
 		return (create_int_ptr(va_arg(*args, int)));
-	if (ft_strchr(f_str, 'u')
-		|| ft_strchr(f_str, 'x')
-		|| ft_strchr(f_str, 'X'))
+	if (f_props.f_ch == 'u'
+		|| f_props.f_ch == 'x'
+		|| f_props.f_ch == 'X')
 		return (create_uint_ptr(va_arg(*args, unsigned int)));
 	return (NULL);
 }

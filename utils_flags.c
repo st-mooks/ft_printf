@@ -1,48 +1,54 @@
 #include "ft_printf.h"
 
-char    *advance_str(char *pad_str, t_format format_props)
+void    add_sign_space(char **precision_str, char **pad_str,
+    int arg, t_format *f_props)
 {
-    char *ptr;
+    char    *sign_space;
 
-    if ((format_props.sign || format_props.space)
-        && pad_str)
+    sign_space = " ";
+    if (f_props->sign)
+        sign_space = "+";
+    if (arg < 0)
     {
-        if (*pad_str)
-        {
-            ptr = pad_str;
-            pad_str = ft_strdup(pad_str + 1);
-            free (ptr);
-        }
+        sign_space = "-";
+        f_props->sign = 1;
     }
-    return (pad_str);
-}
-
-char    *add_sign_space(char *precision_str, t_format format_props)
-{
-    if (format_props.sign)
-        precision_str = join_free_str(precision_str, "+", 1);
-    else if (format_props.space)
-        precision_str = join_free_str(precision_str, " ", 1);
-    return (precision_str);
-}
-
-void    add_0x(char **precision_str, char **pad_str,
-    char *f_str,   t_format format_props)
-{
-    int     is_add;
-    char    *ptr;
-
-    is_add = (ft_strchr(f_str, '#') != NULL);
-    if (is_add)
+    if (f_props->sign || f_props->space)
     {
-        if (!format_props.pad_0)
-            *precision_str = join_free_str(*precision_str, "0x", 1);
-        else if (ft_strlen(*pad_str) > 1)
+        if (ft_strlen(*pad_str) > 0)
         {
-            ptr = *pad_str;
-            *pad_str = ft_strdup(*pad_str + 2);
-            *pad_str = join_free_str(*pad_str, "0x", 1);
-            free(ptr);
+            *pad_str = reset_str(*pad_str, ft_strdup(*pad_str + 1));
         }
+        else if (*sign_space == '-')
+            f_props->len += 1;
+        if (f_props->pad_0)
+            *pad_str = reset_str(*pad_str, ft_strjoin(sign_space, *pad_str));
+        else
+            *precision_str = reset_str(*precision_str,
+                ft_strjoin(sign_space, *precision_str));
+    }
+}
+
+void    add_0x(char **precision_str, char **pad_str, t_format *f_props)
+{
+    ssize_t pad_len;
+
+    pad_len = ft_strlen(*pad_str);
+    if (f_props->hex_0x && **precision_str)
+    {
+        if (pad_len == 1)
+        {
+            *pad_str = reset_str(*pad_str, ft_strdup(*pad_str + 1));
+            f_props->len += 1;
+        }
+        else if (pad_len > 1)
+            *pad_str = reset_str(*pad_str, ft_strdup(*pad_str + 2));
+        else
+            f_props->len += 2;
+        if (f_props->pad_0)
+            *pad_str = reset_str(*pad_str, ft_strjoin("0x", *pad_str));
+        else
+            *precision_str = reset_str(*precision_str,
+                ft_strjoin("0x", *precision_str));
     }
 }

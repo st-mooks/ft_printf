@@ -3,23 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 13:07:29 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/18 13:07:30 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/19 15:46:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_hex(char *f_str, uintptr_t arg, int *char_count)
+void	print_hex(uintptr_t arg, int *char_count, t_format f_props)
 {
-	t_format			format_props;
-	char				*str;
+	char		*str;
+	char		*arg_str;
 
-	fill_format_props(&format_props, f_str);
-	str = build_str_hex(arg, format_props, f_str);
-	if (ft_strchr(f_str, 'X'))
+	arg_str = get_hex_str(arg);
+	str = build_str_hex(arg_str, &f_props);
+	if (f_props.f_ch == 'X')
 		capitalise(str);
-	print_update_free(str, char_count);
+	free(arg_str);
+	print_update_free(str, char_count, f_props, 0);
 }

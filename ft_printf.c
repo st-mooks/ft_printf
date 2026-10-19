@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@students.42amman.com>   +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/05 13:39:27 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/15 16:34:31 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/19 16:16:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,13 @@ int	ft_printf(const char *str, ...)
 	char	*f_str;
 
 	char_count = 0;
+	if (!str)
+		return (-1);
 	va_start(args, str);
 	while (*str)
 	{
+		if (char_count < 0)
+			return (-1);
 		if (*str == '%')
 		{
 			f_str = get_f_str(&str, &char_count);

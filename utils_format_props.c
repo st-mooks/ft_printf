@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_format_props.c                               :+:      :+:    :+:   */
+/*   utils_f_props.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 13:08:35 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/18 13:18:09 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/19 10:52:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,32 @@ int	get_pad_0(char *f_str)
 	return (pad_0);
 }
 
-void    fill_format_props(t_format *format_props, char *f_str)
+void	update_f_props_len(t_format *f_props, char *precision_str)
 {
-    format_props->precision = get_precision(f_str);
-	format_props->width = get_width(f_str);
-	format_props->just_l = (ft_strchr(f_str, '-') != NULL);
-	format_props->pad_0 = (
+	f_props->len = max (3,
+			f_props->width,
+			f_props->precision,
+			ft_strlen(precision_str));
+}
+
+void    fill_f_props(t_format *f_props, char *f_str)
+{
+	f_props->f_ch = *(f_str + ft_strlen(f_str) - 1);
+    f_props->precision = get_precision(f_str);
+	f_props->width = get_width(f_str);
+	f_props->precision_flag = (ft_strchr(f_str, '.') != NULL);
+	f_props->just_l = (ft_strchr(f_str, '-') != NULL);
+	f_props->pad_0 = (
             get_pad_0(f_str)
-			&& !ft_strchr(f_str, '.')
-			&& !format_props->just_l
-            && !ft_strchr(f_str, 'c')
-            && !ft_strchr(f_str, 's'));
-	format_props->sign = (ft_strchr(f_str, '+') != NULL);
-	format_props->space = (
+			&& !f_props->precision_flag
+			&& !f_props->just_l
+            && f_props->f_ch != 'c'
+            && f_props->f_ch != 's');
+	f_props->sign = (ft_strchr(f_str, '+') != NULL);
+	f_props->space = (
             (ft_strchr(f_str, ' ') != NULL)
-			&& !format_props->sign);
+			&& !f_props->sign);
+	f_props->hex_0x = (
+		ft_strchr(f_str, '#') != NULL
+		|| f_props->f_ch == 'p');
 }

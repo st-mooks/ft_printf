@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_f_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 13:08:48 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/18 13:08:49 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/19 14:37:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	check_and_print(char *f_str, va_list *args, int *char_count)
-{
-	if (f_str)
-	{
-		print_arg(f_str, args, char_count);
-		free(f_str);
-	}
-}
 
 int	get_f_str_len(char *str)
 {
@@ -38,8 +29,6 @@ int	get_f_str_len(char *str)
 	}
 	if (ft_strchr(valid_specifiers, *str))
 		len++;
-	else
-		len = 0;
 	return (len);
 }
 

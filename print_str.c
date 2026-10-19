@@ -3,44 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   print_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 13:08:04 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/18 13:08:05 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/19 15:46:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*get_trim_str(char *f_str, char *arg, size_t arg_len, size_t precision)
+char	*get_trim_str(char *arg, t_format f_props)
 {
 	char	*str;
 	size_t	size;
+	size_t	arg_len;
 
-	if (precision >= arg_len || !ft_strchr(f_str, '.'))
+	arg_len = ft_strlen(arg);
+	if (f_props.precision >= arg_len
+		|| !f_props.precision_flag
+		|| f_props.f_ch == 'p')
 		return (ft_strdup(arg));
 	size = 0;
-	while (size < precision)
+	while (size < f_props.precision)
 		size++;
 	str = ft_substr(arg, 0, size);
 	return (str);
 }
 
-void	print_str(char *f_str, char *arg, int *char_count)
+void	print_str(char *arg, int *char_count, t_format f_props)
 {
 	char		*str;
-	char		*ptr;
-	t_format	format_props;
 
-	ptr = NULL;
 	if (!arg)
 	{
-		arg = ft_strdup("(null)");
-		ptr = arg;
+		print_str("(null)", char_count, f_props);
+		return ;
 	}
-	fill_format_props(&format_props, f_str);
-	str = build_str_str(f_str, arg, format_props);
-	if (ptr)
-		free(ptr);
-	print_update_free(str, char_count);
+	str = build_str_str(arg, &f_props);
+	print_update_free(str, char_count, f_props, 0);
 }

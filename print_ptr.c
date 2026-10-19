@@ -3,25 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   print_ptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 13:07:52 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/18 13:07:54 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/19 15:45:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_ptr(char *f_str, void *arg, int *char_count)
+void	print_ptr(void *arg, int *char_count, t_format f_props)
 {
-	char		*f_str_to_hex;
-
 	if (!arg)
 	{
-		print_str(f_str, "(nil)", char_count);
+		print_str("(nil)", char_count, f_props);
 		return ;
 	}
-	f_str_to_hex = ft_strjoin("#", f_str);
-	print_hex(f_str_to_hex, (uintptr_t)arg, char_count);
-	free(f_str_to_hex);
+	print_hex((uintptr_t)arg, char_count, f_props);
 }

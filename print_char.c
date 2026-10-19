@@ -3,38 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 13:07:18 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/18 13:07:20 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/19 16:00:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_char(char *f_str, char arg, int *char_count)
+void	print_char(char arg, int *char_count, t_format f_props)
 {
 	char		*str;
-	t_format	format_props;
+	char		arg_str[2];
 
-	fill_format_props(&format_props, f_str);
-	str = build_str_char(arg, format_props);
-	if (!arg)
-	{
-			*char_count += 1;
-			if (format_props.just_l)
-			{
-					ft_putchar_fd(0, 1);
-					ft_putstr_fd(str, 1);
-			}
-			else
-			{
-					ft_putstr_fd(str, 1);
-					ft_putchar_fd(0, 1);
-			}
-			char_count += ft_strlen(str);
-			free (str);	
-	}
-	else
-		print_update_free(str, char_count);
+	arg_str[0] = arg;
+	arg_str[1] = '\0';
+	str = build_str_char(arg_str, &f_props);
+	print_update_free(str, char_count, f_props, !arg);
 }

@@ -1,2 +1,5 @@
 printfTester/
 a.out
+main.c
+retest.sh
+debug.c

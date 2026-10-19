@@ -12,22 +12,22 @@
 
 #include "ft_printf.h"
 
-char	*get_precision_str(char *arg, size_t precision)
+char	*get_precision_str(char *arg, t_format f_props)
 {
 	char	*str;
 	size_t	arg_len;
 	size_t	i;
 	size_t	size;
 
-	if (*arg == '0')
+	if (*arg == '0' && !f_props.precision && f_props.precision_flag)
 		return (ft_strdup(""));
 	arg_len = ft_strlen(arg);
-	size = max(2, arg_len, precision) + 1;
+	size = max(2, arg_len, f_props.precision) + 1;
 	str = malloc(size);
 	if (!str)
 		return (NULL);
 	i = 0;
-	while (precision > arg_len + i)
+	while (f_props.precision > arg_len + i)
 		str[i++] = '0';
 	str[i] = '\0';
 	ft_strlcat(str, arg, size);
@@ -76,15 +76,12 @@ char	*get_hex_str(uintptr_t n)
 	return (hex_str);
 }
 
-char	*join_free_str(char *str, char *new, int reverse)
+char	*reset_str(char *str, char *new)
 {
 	char	*ptr;
 
 	ptr = str;
-	if (reverse)
-		str = ft_strjoin(new, str);
-	else
-		str = ft_strjoin(str, new);
+	str = new;
 	free(ptr);
 	return (str);
 }
