@@ -690,6 +690,608 @@ int main(void)
     ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
     assert_return(ft_n, n);
 
+     /* ROUND: ZERO AND PRECISION */
 
+    /* TEST 073: [%.d] */
+    printf("\n========== TEST 073 ==========\n");
+    printf("Format: %s + SEP\n", "[%.d]");
+    ft_n = ft_printf("[%.d]" SEP, 0);
+    n = printf("[%.d]\n", 0);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 074: [%.i] */
+    printf("\n========== TEST 074 ==========\n");
+    printf("Format: %s + SEP\n", "[%.i]");
+    ft_n = ft_printf("[%.i]" SEP, 0);
+    n = printf("[%.i]\n", 0);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 075: [%.u] */
+    printf("\n========== TEST 075 ==========\n");
+    printf("Format: %s + SEP\n", "[%.u]");
+    ft_n = ft_printf("[%.u]" SEP, 0u);
+    n = printf("[%.u]\n", 0u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 076: [%.x] */
+    printf("\n========== TEST 076 ==========\n");
+    printf("Format: %s + SEP\n", "[%.x]");
+    ft_n = ft_printf("[%.x]" SEP, 0u);
+    n = printf("[%.x]\n", 0u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 077: [%.X] */
+    printf("\n========== TEST 077 ==========\n");
+    printf("Format: %s + SEP\n", "[%.X]");
+    ft_n = ft_printf("[%.X]" SEP, 0u);
+    n = printf("[%.X]\n", 0u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 078: [%+.d] */
+    printf("\n========== TEST 078 ==========\n");
+    printf("Format: %s + SEP\n", "[%+.d]");
+    ft_n = ft_printf("[%+.d]" SEP, 0);
+    n = printf("[%+.d]\n", 0);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 079: [% .d] */
+    printf("\n========== TEST 079 ==========\n");
+    printf("Format: %s + SEP\n", "[% .d]");
+    ft_n = ft_printf("[% .d]" SEP, 0);
+    n = printf("[% .d]\n", 0);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 080: [%#.x] */
+    printf("\n========== TEST 080 ==========\n");
+    printf("Format: %s + SEP\n", "[%#.x]");
+    ft_n = ft_printf("[%#.x]" SEP, 0u);
+    n = printf("[%#.x]\n", 0u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 081: [%#.X] */
+    printf("\n========== TEST 081 ==========\n");
+    printf("Format: %s + SEP\n", "[%#.X]");
+    ft_n = ft_printf("[%#.X]" SEP, 0u);
+    n = printf("[%#.X]\n", 0u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 082: [%#.1x] */
+    printf("\n========== TEST 082 ==========\n");
+    printf("Format: %s + SEP\n", "[%#.1x]");
+    ft_n = ft_printf("[%#.1x]" SEP, 0u);
+    n = printf("[%#.1x]\n", 0u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 083: [%#.1X] */
+    printf("\n========== TEST 083 ==========\n");
+    printf("Format: %s + SEP\n", "[%#.1X]");
+    ft_n = ft_printf("[%#.1X]" SEP, 0u);
+    n = printf("[%#.1X]\n", 0u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 084: [%#05.0x] */
+    printf("\n========== TEST 084 ==========\n");
+    printf("Format: %s + SEP\n", "[%#05.0x]");
+    ft_n = ft_printf("[%#05.0x]" SEP, 0u);
+    n = printf("[%#05.0x]\n", 0u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 085: [%#05.0x] */
+    printf("\n========== TEST 085 ==========\n");
+    printf("Format: %s + SEP\n", "[%#05.0x]");
+    ft_n = ft_printf("[%#05.0x]" SEP, 1u);
+    n = printf("[%#05.0x]\n", 1u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 086: [%05.0d] */
+    printf("\n========== TEST 086 ==========\n");
+    printf("Format: %s + SEP\n", "[%05.0d]");
+    ft_n = ft_printf("[%05.0d]" SEP, -1);
+    n = printf("[%05.0d]\n", -1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 087: [%+05.0d] */
+    printf("\n========== TEST 087 ==========\n");
+    printf("Format: %s + SEP\n", "[%+05.0d]");
+    ft_n = ft_printf("[%+05.0d]" SEP, 0);
+    n = printf("[%+05.0d]\n", 0);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 088: [% 05.0d] */
+    printf("\n========== TEST 088 ==========\n");
+    printf("Format: %s + SEP\n", "[% 05.0d]");
+    ft_n = ft_printf("[% 05.0d]" SEP, 0);
+    n = printf("[% 05.0d]\n", 0);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+
+
+    /* ROUND: BOUNDARY WIDTHS AND SIGNS */
+
+    /* TEST 089: [%1d] */
+    printf("\n========== TEST 089 ==========\n");
+    printf("Format: %s + SEP\n", "[%1d]");
+    ft_n = ft_printf("[%1d]" SEP, -1);
+    n = printf("[%1d]\n", -1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 090: [%2d] */
+    printf("\n========== TEST 090 ==========\n");
+    printf("Format: %s + SEP\n", "[%2d]");
+    ft_n = ft_printf("[%2d]" SEP, -1);
+    n = printf("[%2d]\n", -1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 091: [%3d] */
+    printf("\n========== TEST 091 ==========\n");
+    printf("Format: %s + SEP\n", "[%3d]");
+    ft_n = ft_printf("[%3d]" SEP, -1);
+    n = printf("[%3d]\n", -1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 092: [%4d] */
+    printf("\n========== TEST 092 ==========\n");
+    printf("Format: %s + SEP\n", "[%4d]");
+    ft_n = ft_printf("[%4d]" SEP, -1);
+    n = printf("[%4d]\n", -1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 093: [%01d] */
+    printf("\n========== TEST 093 ==========\n");
+    printf("Format: %s + SEP\n", "[%01d]");
+    ft_n = ft_printf("[%01d]" SEP, -1);
+    n = printf("[%01d]\n", -1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 094: [%02d] */
+    printf("\n========== TEST 094 ==========\n");
+    printf("Format: %s + SEP\n", "[%02d]");
+    ft_n = ft_printf("[%02d]" SEP, -1);
+    n = printf("[%02d]\n", -1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 095: [%03d] */
+    printf("\n========== TEST 095 ==========\n");
+    printf("Format: %s + SEP\n", "[%03d]");
+    ft_n = ft_printf("[%03d]" SEP, -1);
+    n = printf("[%03d]\n", -1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 096: [%+01d] */
+    printf("\n========== TEST 096 ==========\n");
+    printf("Format: %s + SEP\n", "[%+01d]");
+    ft_n = ft_printf("[%+01d]" SEP, 1);
+    n = printf("[%+01d]\n", 1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 097: [%+02d] */
+    printf("\n========== TEST 097 ==========\n");
+    printf("Format: %s + SEP\n", "[%+02d]");
+    ft_n = ft_printf("[%+02d]" SEP, 1);
+    n = printf("[%+02d]\n", 1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 098: [%+03d] */
+    printf("\n========== TEST 098 ==========\n");
+    printf("Format: %s + SEP\n", "[%+03d]");
+    ft_n = ft_printf("[%+03d]" SEP, 1);
+    n = printf("[%+03d]\n", 1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 099: [% 03d] */
+    printf("\n========== TEST 099 ==========\n");
+    printf("Format: %s + SEP\n", "[% 03d]");
+    ft_n = ft_printf("[% 03d]" SEP, 1);
+    n = printf("[% 03d]\n", 1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 100: [%-03d] */
+    printf("\n========== TEST 100 ==========\n");
+    printf("Format: %s + SEP\n", "[%-03d]");
+    ft_n = ft_printf("[%-03d]" SEP, 1);
+    n = printf("[%-03d]\n", 1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 101: [%+04.3d] */
+    printf("\n========== TEST 101 ==========\n");
+    printf("Format: %s + SEP\n", "[%+04.3d]");
+    ft_n = ft_printf("[%+04.3d]" SEP, 1);
+    n = printf("[%+04.3d]\n", 1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 102: [% 04.3d] */
+    printf("\n========== TEST 102 ==========\n");
+    printf("Format: %s + SEP\n", "[% 04.3d]");
+    ft_n = ft_printf("[% 04.3d]" SEP, 1);
+    n = printf("[% 04.3d]\n", 1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 103: [%+04.3d] */
+    printf("\n========== TEST 103 ==========\n");
+    printf("Format: %s + SEP\n", "[%+04.3d]");
+    ft_n = ft_printf("[%+04.3d]" SEP, -1);
+    n = printf("[%+04.3d]\n", -1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 104: [%+1.0d] */
+    printf("\n========== TEST 104 ==========\n");
+    printf("Format: %s + SEP\n", "[%+1.0d]");
+    ft_n = ft_printf("[%+1.0d]" SEP, 0);
+    n = printf("[%+1.0d]\n", 0);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 105: [%+2.0d] */
+    printf("\n========== TEST 105 ==========\n");
+    printf("Format: %s + SEP\n", "[%+2.0d]");
+    ft_n = ft_printf("[%+2.0d]" SEP, 0);
+    n = printf("[%+2.0d]\n", 0);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 106: [% 2.0d] */
+    printf("\n========== TEST 106 ==========\n");
+    printf("Format: %s + SEP\n", "[% 2.0d]");
+    ft_n = ft_printf("[% 2.0d]" SEP, 0);
+    n = printf("[% 2.0d]\n", 0);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+
+
+    /* ROUND: HEXADECIMAL PREFIX BOUNDARIES */
+
+    /* TEST 107: [%#x] */
+    printf("\n========== TEST 107 ==========\n");
+    printf("Format: %s + SEP\n", "[%#x]");
+    ft_n = ft_printf("[%#x]" SEP, 0u);
+    n = printf("[%#x]\n", 0u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 108: [%#x] */
+    printf("\n========== TEST 108 ==========\n");
+    printf("Format: %s + SEP\n", "[%#x]");
+    ft_n = ft_printf("[%#x]" SEP, 1u);
+    n = printf("[%#x]\n", 1u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 109: [%#X] */
+    printf("\n========== TEST 109 ==========\n");
+    printf("Format: %s + SEP\n", "[%#X]");
+    ft_n = ft_printf("[%#X]" SEP, 15u);
+    n = printf("[%#X]\n", 15u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 110: [%#3x] */
+    printf("\n========== TEST 110 ==========\n");
+    printf("Format: %s + SEP\n", "[%#3x]");
+    ft_n = ft_printf("[%#3x]" SEP, 1u);
+    n = printf("[%#3x]\n", 1u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 111: [%#4x] */
+    printf("\n========== TEST 111 ==========\n");
+    printf("Format: %s + SEP\n", "[%#4x]");
+    ft_n = ft_printf("[%#4x]" SEP, 1u);
+    n = printf("[%#4x]\n", 1u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 112: [%#5x] */
+    printf("\n========== TEST 112 ==========\n");
+    printf("Format: %s + SEP\n", "[%#5x]");
+    ft_n = ft_printf("[%#5x]" SEP, 1u);
+    n = printf("[%#5x]\n", 1u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 113: [%#03x] */
+    printf("\n========== TEST 113 ==========\n");
+    printf("Format: %s + SEP\n", "[%#03x]");
+    ft_n = ft_printf("[%#03x]" SEP, 1u);
+    n = printf("[%#03x]\n", 1u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 114: [%#04x] */
+    printf("\n========== TEST 114 ==========\n");
+    printf("Format: %s + SEP\n", "[%#04x]");
+    ft_n = ft_printf("[%#04x]" SEP, 1u);
+    n = printf("[%#04x]\n", 1u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 115: [%#05x] */
+    printf("\n========== TEST 115 ==========\n");
+    printf("Format: %s + SEP\n", "[%#05x]");
+    ft_n = ft_printf("[%#05x]" SEP, 1u);
+    n = printf("[%#05x]\n", 1u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 116: [%#-05x] */
+    printf("\n========== TEST 116 ==========\n");
+    printf("Format: %s + SEP\n", "[%#-05x]");
+    ft_n = ft_printf("[%#-05x]" SEP, 1u);
+    n = printf("[%#-05x]\n", 1u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 117: [%#6.4x] */
+    printf("\n========== TEST 117 ==========\n");
+    printf("Format: %s + SEP\n", "[%#6.4x]");
+    ft_n = ft_printf("[%#6.4x]" SEP, 1u);
+    n = printf("[%#6.4x]\n", 1u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 118: [%#06.4x] */
+    printf("\n========== TEST 118 ==========\n");
+    printf("Format: %s + SEP\n", "[%#06.4x]");
+    ft_n = ft_printf("[%#06.4x]" SEP, 1u);
+    n = printf("[%#06.4x]\n", 1u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 119: [%#6.4X] */
+    printf("\n========== TEST 119 ==========\n");
+    printf("Format: %s + SEP\n", "[%#6.4X]");
+    ft_n = ft_printf("[%#6.4X]" SEP, 0xABu);
+    n = printf("[%#6.4X]\n", 0xABu);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 120: [%#12.8x] */
+    printf("\n========== TEST 120 ==========\n");
+    printf("Format: %s + SEP\n", "[%#12.8x]");
+    ft_n = ft_printf("[%#12.8x]" SEP, 0x1234u);
+    n = printf("[%#12.8x]\n", 0x1234u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 121: [%#012x] */
+    printf("\n========== TEST 121 ==========\n");
+    printf("Format: %s + SEP\n", "[%#012x]");
+    ft_n = ft_printf("[%#012x]" SEP, 0x1234u);
+    n = printf("[%#012x]\n", 0x1234u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+
+
+    /* ROUND: STRING AND CHAR BOUNDARIES */
+
+    /* TEST 122: [%.1s] */
+    printf("\n========== TEST 122 ==========\n");
+    printf("Format: %s + SEP\n", "[%.1s]");
+    ft_n = ft_printf("[%.1s]" SEP, "");
+    n = printf("[%.1s]\n", "");
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 123: [%.1s] */
+    printf("\n========== TEST 123 ==========\n");
+    printf("Format: %s + SEP\n", "[%.1s]");
+    ft_n = ft_printf("[%.1s]" SEP, "a");
+    n = printf("[%.1s]\n", "a");
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 124: [%.1s] */
+    printf("\n========== TEST 124 ==========\n");
+    printf("Format: %s + SEP\n", "[%.1s]");
+    ft_n = ft_printf("[%.1s]" SEP, "ab");
+    n = printf("[%.1s]\n", "ab");
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 125: [%1.1s] */
+    printf("\n========== TEST 125 ==========\n");
+    printf("Format: %s + SEP\n", "[%1.1s]");
+    ft_n = ft_printf("[%1.1s]" SEP, "ab");
+    n = printf("[%1.1s]\n", "ab");
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 126: [%2.1s] */
+    printf("\n========== TEST 126 ==========\n");
+    printf("Format: %s + SEP\n", "[%2.1s]");
+    ft_n = ft_printf("[%2.1s]" SEP, "ab");
+    n = printf("[%2.1s]\n", "ab");
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 127: [%-2.1s] */
+    printf("\n========== TEST 127 ==========\n");
+    printf("Format: %s + SEP\n", "[%-2.1s]");
+    ft_n = ft_printf("[%-2.1s]" SEP, "ab");
+    n = printf("[%-2.1s]\n", "ab");
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 128: [%2.0s] */
+    printf("\n========== TEST 128 ==========\n");
+    printf("Format: %s + SEP\n", "[%2.0s]");
+    ft_n = ft_printf("[%2.0s]" SEP, "ab");
+    n = printf("[%2.0s]\n", "ab");
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 129: [%-2.0s] */
+    printf("\n========== TEST 129 ==========\n");
+    printf("Format: %s + SEP\n", "[%-2.0s]");
+    ft_n = ft_printf("[%-2.0s]" SEP, "ab");
+    n = printf("[%-2.0s]\n", "ab");
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 130: [%1s] */
+    printf("\n========== TEST 130 ==========\n");
+    printf("Format: %s + SEP\n", "[%1s]");
+    ft_n = ft_printf("[%1s]" SEP, "");
+    n = printf("[%1s]\n", "");
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 131: [%1c] */
+    printf("\n========== TEST 131 ==========\n");
+    printf("Format: %s + SEP\n", "[%1c]");
+    ft_n = ft_printf("[%1c]" SEP, '\0');
+    n = printf("[%1c]\n", '\0');
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 132: [%2c] */
+    printf("\n========== TEST 132 ==========\n");
+    printf("Format: %s + SEP\n", "[%2c]");
+    ft_n = ft_printf("[%2c]" SEP, '\0');
+    n = printf("[%2c]\n", '\0');
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 133: [%-2c] */
+    printf("\n========== TEST 133 ==========\n");
+    printf("Format: %s + SEP\n", "[%-2c]");
+    ft_n = ft_printf("[%-2c]" SEP, '\0');
+    n = printf("[%-2c]\n", '\0');
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 134: [%1c] */
+    printf("\n========== TEST 134 ==========\n");
+    printf("Format: %s + SEP\n", "[%1c]");
+    ft_n = ft_printf("[%1c]" SEP, 'A');
+    n = printf("[%1c]\n", 'A');
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 135: [%2c] */
+    printf("\n========== TEST 135 ==========\n");
+    printf("Format: %s + SEP\n", "[%2c]");
+    ft_n = ft_printf("[%2c]" SEP, 'A');
+    n = printf("[%2c]\n", 'A');
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 136: [%-2c] */
+    printf("\n========== TEST 136 ==========\n");
+    printf("Format: %s + SEP\n", "[%-2c]");
+    ft_n = ft_printf("[%-2c]" SEP, 'A');
+    n = printf("[%-2c]\n", 'A');
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+
+
+    /* ROUND: MULTI-ARGUMENT MAYHEM */
+
+    /* TEST 137: [%.0d|%d|%.0d] */
+    printf("\n========== TEST 137 ==========\n");
+    printf("Format: %s + SEP\n", "[%.0d|%d|%.0d]");
+    ft_n = ft_printf("[%.0d|%d|%.0d]" SEP, 0, 1, 0);
+    n = printf("[%.0d|%d|%.0d]\n", 0, 1, 0);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 138: [%#x|%#X|%#x] */
+    printf("\n========== TEST 138 ==========\n");
+    printf("Format: %s + SEP\n", "[%#x|%#X|%#x]");
+    ft_n = ft_printf("[%#x|%#X|%#x]" SEP, 0u, 1u, 16u);
+    n = printf("[%#x|%#X|%#x]\n", 0u, 1u, 16u);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 139: [%+05d|% 05d|%-5d] */
+    printf("\n========== TEST 139 ==========\n");
+    printf("Format: %s + SEP\n", "[%+05d|% 05d|%-5d]");
+    ft_n = ft_printf("[%+05d|% 05d|%-5d]" SEP, -1, 1, 1);
+    n = printf("[%+05d|% 05d|%-5d]\n", -1, 1, 1);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 140: [%2c|%-2c|%c] */
+    printf("\n========== TEST 140 ==========\n");
+    printf("Format: %s + SEP\n", "[%2c|%-2c|%c]");
+    ft_n = ft_printf("[%2c|%-2c|%c]" SEP, '\0', '\0', 'Z');
+    n = printf("[%2c|%-2c|%c]\n", '\0', '\0', 'Z');
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 141: [%.0s|%5.0s|%-5.1s] */
+    printf("\n========== TEST 141 ==========\n");
+    printf("Format: %s + SEP\n", "[%.0s|%5.0s|%-5.1s]");
+    ft_n = ft_printf("[%.0s|%5.0s|%-5.1s]" SEP, "hello", "world", "duck");
+    n = printf("[%.0s|%5.0s|%-5.1s]\n", "hello", "world", "duck");
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 142: [%p|%20p|%-20p] */
+    printf("\n========== TEST 142 ==========\n");
+    printf("Format: %s + SEP\n", "[%p|%20p|%-20p]");
+    ft_n = ft_printf("[%p|%20p|%-20p]" SEP, (void *)NULL, (void *)NULL, (void *)NULL);
+    n = printf("[%p|%20p|%-20p]\n", (void *)NULL, (void *)NULL, (void *)NULL);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 143: [%%|%d|%%|%x|%%] */
+    printf("\n========== TEST 143 ==========\n");
+    printf("Format: %s + SEP\n", "[%%|%d|%%|%x|%%]");
+    ft_n = ft_printf("[%%|%d|%%|%x|%%]" SEP, -1, 0xABu);
+    n = printf("[%%|%d|%%|%x|%%]\n", -1, 0xABu);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 144: [%d%d%d%d%d%d%d%d] */
+    printf("\n========== TEST 144 ==========\n");
+    printf("Format: %s + SEP\n", "[%d%d%d%d%d%d%d%d]");
+    ft_n = ft_printf("[%d%d%d%d%d%d%d%d]" SEP, 1, -2, 3, -4, 5, -6, 7, -8);
+    n = printf("[%d%d%d%d%d%d%d%d]\n", 1, -2, 3, -4, 5, -6, 7, -8);
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    /* TEST 145: [%#08x][%+08d][%-8.3s] */
+    printf("\n========== TEST 145 ==========\n");
+    printf("Format: %s + SEP\n", "[%#08x][%+08d][%-8.3s]");
+    ft_n = ft_printf("[%#08x][%+08d][%-8.3s]" SEP, 0xAu, -42, "chicken");
+    n = printf("[%#08x][%+08d][%-8.3s]\n", 0xAu, -42, "chicken");
+    ft_printf("ft_printf: %d" SEP "printf:%d\n", ft_n, n);
+    assert_return(ft_n, n);
+
+    
     return (0);
 }
