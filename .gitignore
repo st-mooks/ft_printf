@@ -1,6 +1,6 @@
 libftprintf.a
 /libft/libft.a
-ft_printf_bonus/libprintf_bonus.a
+ft_printf_bonus/libftprintf_bonus.a
 printfTester/
 a.out
 main.c
