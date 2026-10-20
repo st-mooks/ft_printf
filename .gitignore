@@ -1,2 +1,7 @@
 printfTester/
 a.out
+main.c
+retest.sh
+ft_printf_bonus/main.c
+ft_printf_bonus/a.out
+ft_printf_bonus/retest.sh
