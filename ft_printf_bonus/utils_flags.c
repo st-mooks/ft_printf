@@ -1,4 +1,16 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_flags.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/20 10:58:45 by mbadarin          #+#    #+#             */
+/*   Updated: 2026/10/20 10:58:52 by mbadarin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf_bonus.h"
 
 void    add_sign_space(char **precision_str, char **pad_str,
     int arg, t_format *f_props)

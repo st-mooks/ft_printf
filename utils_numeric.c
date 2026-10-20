@@ -6,29 +6,11 @@
 /*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 13:08:58 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/18 13:08:59 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/20 10:11:01 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-size_t	max(int arg_count, ...)
-{
-	va_list	args;
-	size_t	a;
-	size_t	b;
-
-	va_start(args, arg_count);
-	a = va_arg(args, size_t);
-	arg_count--;
-	while (arg_count-- > 0)
-	{
-		b = va_arg(args, size_t);
-		if (b > a)
-			a = b;
-	}
-	return (a);
-}
 
 char	*fill_digits(uintptr_t l, int size)
 {

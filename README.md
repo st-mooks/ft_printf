@@ -6,9 +6,9 @@
 
 ### Description
 
-A simplistic implementation of C's printf created as a requirement of "**Milestone 1**" of 42 Amman's core curriculum.
+A basic implementation of C's printf created as a requirement of "**Milestone 1**" of 42 Amman's core curriculum.
 
-This implemetation handles a subset of the character specifiers and flags supported in the original. It also does not implemet any of the buffer management of the original printf.
+This implemetation handles a subset of the *character specifiers* (and *flags* in the bonus section) supported in the original. It **does not** implemet any of the buffer management behaviours of the original printf.
 
 
 ### Instructions
@@ -47,9 +47,11 @@ make re
 
 [^1]: Note: Last two references concern printf's buffering, which, while not implemented in this version, is still a note worthy behaviour to be aware of.
 
-Use of AI was limited, and mainly used with explicit prompts such as *"I am a new C learner, facing issue (X). Do not give answers. Act as a socratic tutor and ask questions that prod me in the reight direction."*
+Use of AI was limited, and mainly used with explicit prompts such as *"I am a new C learner, facing issue (X). Do not give answers. Act as a socratic tutor and ask questions that prod me in the reight direction."*  and for the purpose of generating test cases.
 
 ### Detailed desriptions
+
+#### Mandatory
 
 This implementation hadnles the following specifier characters:
 - char (%c)
@@ -58,6 +60,8 @@ This implementation hadnles the following specifier characters:
 - unsigned int (%u)
 - hex (%x/%X) (small and captial respecitvely)
 - pointer (%p)
+
+#### Bonus
 
 As well as the following flags:
 | Flag | Valid targets | Description |

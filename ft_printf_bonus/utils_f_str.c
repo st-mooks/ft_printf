@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_f_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 13:08:48 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/19 14:37:37 by marvin           ###   ########.fr       */
+/*   Updated: 2026/10/20 10:58:37 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 int	get_f_str_len(char *str)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/05 13:39:27 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/19 16:16:52 by marvin           ###   ########.fr       */
+/*   Created: 2026/10/20 09:43:39 by mbadarin          #+#    #+#             */
+/*   Updated: 2026/10/20 09:50:51 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_printf(const char *str, ...)
 {
 	int		char_count;
 	va_list	args;
-	char	*f_str;
+	char	f_ch;
 
 	char_count = 0;
 	if (!str)
@@ -28,8 +28,8 @@ int	ft_printf(const char *str, ...)
 			return (-1);
 		if (*str == '%')
 		{
-			f_str = get_f_str(&str, &char_count);
-			check_and_print(f_str, &args, &char_count);
+			f_ch = get_f_ch(&str, &char_count);
+			print_arg(f_ch, &args, &char_count);
 		}
 		else
 		{
