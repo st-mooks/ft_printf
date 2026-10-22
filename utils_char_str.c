@@ -12,32 +12,38 @@
 
 #include "ft_printf.h"
 
-char	*add_str(char *original, char *new)
+char	*add_str(char *original, char *str, int char_count)
 {
-	char	*old;
-
-	old = original;
-	original = ft_strjoin(original, new);
-	free(old);
-	return (original);
-}
-
-char	*add_char(char *original, char c, int *char_count)
-{
-	char	*old;
+	size_t	str_len;
+	ssize_t	original_len;
+	size_t	new_size;
 	char	*new;
 
-	old = original;
-	new = malloc(2);
-	if (!new)
+	if (!original || !str)
 		return (NULL);
-	new[0] = c;
-	new[1] = '\0';
-	original = ft_strjoin(original, new);
-	*char_count += 1;
-	free(new);
-	free(old);
-	return (original);
+	str_len = ft_strlen(str);
+	original_len = char_count - str_len;
+	new_size = char_count;
+	new = malloc(new_size);
+	ft_memmove(new, original, original_len);
+	ft_memmove(new + original_len, str, str_len);
+	free(original);
+	return (new);
+}
+
+char	*add_char(char *original, char c, int char_count)
+{
+	size_t	new_size;
+	char	*new;
+
+	if (!original)
+		return (NULL);
+	new_size = char_count + 1;
+	new = malloc(new_size);
+	ft_memmove(new, original, new_size - 1);
+	new[new_size - 1] = c;
+	free(original);
+	return (new);
 }
 
 char	*get_hex_str(uintptr_t n)

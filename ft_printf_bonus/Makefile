@@ -6,11 +6,11 @@
 #    By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/10/20 10:57:41 by mbadarin          #+#    #+#              #
-#    Updated: 2026/10/22 12:00:56 by mbadarin         ###   ########.fr        #
+#    Updated: 2026/10/22 15:21:05 by mbadarin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME:= libftprintf_bonus.a
+NAME:= libftprintf.a
 CC:= cc
 CFLAGS:= -Wall -Werror -Wextra
 PRINTF_PATH:= .

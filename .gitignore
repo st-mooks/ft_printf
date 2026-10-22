@@ -1,9 +1,10 @@
 libftprintf.a
-/libft/libft.a
-ft_printf_bonus/libftprintf_bonus.a
+libft/libft.a
+ft_printf_bonus/libftprintf.a
 printfTester/
-main.c
-main_bonus.c
+a.out
+libft/a.out
+ft_printf_bonus/a.out
+z_main.c
+z_main_bonus.c
 retest.sh
-mandatory
-bonus
