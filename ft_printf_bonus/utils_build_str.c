@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils_build_str.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/18 16:02:08 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/20 10:58:31 by mbadarin         ###   ########.fr       */
-/*                                                                            */
+/*									    */
+/*							:::      ::::::::   */
+/*   utils_build_str.c				  :+:      :+:    :+:   */
+/*						    +:+ +:+	 +:+     */
+/*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+	*/
+/*						+#+#+#+#+#+   +#+	   */
+/*   Created: 2026/10/18 16:02:08 by mbadarin	  #+#    #+#	     */
+/*   Updated: 2026/10/22 10:59:24 by mbadarin	 ###   ########.fr       */
+/*									    */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
@@ -16,7 +16,7 @@ char	*build_str_char(char *arg, t_format *f_props)
 {
 	char	*pad_str;
 	char	*str;
-	
+
 	update_f_props_len(f_props, arg);
 	if (!*arg && f_props->len > 0)
 		f_props->len -= 1;
@@ -40,7 +40,6 @@ char	*build_str_hex(char *arg, t_format *f_props)
 	char	*pad_str;
 	char	*str;
 
-	
 	precision_str = get_precision_str(arg, *f_props);
 	update_f_props_len(f_props, precision_str);
 	pad_str = get_pad_str(precision_str, f_props->len, f_props->pad_0);

@@ -6,22 +6,18 @@
 /*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 13:06:56 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/20 11:09:40 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/22 10:56:48 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 
 # include "../libft/libft.h"
 # include <stdarg.h>
 # include <limits.h>
 //Uncomment for testing
-# define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define RESET "\033[0m"
-# define WHITE_BG "\033[47m"
-# include <stdio.h>
+//# include <stdio.h>
 
 typedef struct s_format
 {
@@ -65,9 +61,9 @@ void			capitalise(char *str);
 char			*get_trim_str(char *arg, t_format f_props);
 //utils_flags: handle sign and space flags for signed int (%d/%i)
 //and # flag for hex (%x/%X/%p)
-void    		add_sign_space(char **precision_str, char **pad_str,
+void			add_sign_space(char **precision_str, char **pad_str,
 					int arg, t_format *f_props);
-void    		add_0x(char **precision_str, char **pad_str, t_format *f_props);
+void			add_0x(char **precision_str, char **pad_str, t_format *f_props);
 //utils_arg_ptr: create and retrieve pionters to pass to arg print functions
 void			*get_arg(va_list *args, t_format f_props);
 int				*create_int_ptr(int n);

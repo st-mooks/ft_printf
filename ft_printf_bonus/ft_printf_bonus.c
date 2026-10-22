@@ -6,7 +6,7 @@
 /*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/05 13:39:27 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/20 11:07:53 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/22 10:57:25 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	ft_printf(const char *str, ...)
 		}
 		else
 		{
-			ft_putchar_fd(*str, 1);
-			str++;
+			ft_putchar_fd(*str++, 1);
 			char_count++;
 		}
 	}

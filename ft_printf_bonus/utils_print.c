@@ -6,7 +6,7 @@
 /*   By: mbadarin <mbadarin@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/18 13:09:11 by mbadarin          #+#    #+#             */
-/*   Updated: 2026/10/20 10:59:48 by mbadarin         ###   ########.fr       */
+/*   Updated: 2026/10/22 10:58:14 by mbadarin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	check_and_print(char *f_str, va_list *args, int *char_count)
 {
+	t_format	f_props;
+
 	if (f_str)
 	{
-		t_format	f_props;
 		fill_f_props(&f_props, f_str);
 		print_arg(args, char_count, f_props);
 		free(f_str);
@@ -58,7 +59,7 @@ void	print_update_free(char *str, int *char_count,
 {
 	ssize_t	check_s;
 	ssize_t	check_c;
-	
+
 	check_c = 0;
 	if (is_null_char)
 	{
